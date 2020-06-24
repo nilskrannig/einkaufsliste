@@ -10,5 +10,6 @@ const kItemTextStyle = TextStyle(
 );
 
 const kPrimaryColor = Colors.amber;
+const kPrimaryColorDark = Color(0xffFFA000);
 const kPrimaryColorDimmed = Color(0xff755903);
 const kAccentColor = Colors.blueGrey;

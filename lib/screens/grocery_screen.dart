@@ -20,22 +20,66 @@ class _GroceryScreenState extends State<GroceryScreen> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: GroceryListAddItemButton(),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Container(
-            padding: EdgeInsets.only(
-                top: 60.0, left: 30.0, right: 30.0, bottom: 30.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                GroceryListLogo(),
-                SizedBox(
-                  height: 10.0,
+          Stack(
+            children: [
+              Container(
+                padding: EdgeInsets.only(
+                    top: 60.0, left: 30.0, right: 30.0, bottom: 10.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    GroceryListLogo(),
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                    GroceryListTitle(),
+                    GroceryListSubtitle(),
+                  ],
                 ),
-                GroceryListTitle(),
-                GroceryListSubtitle(),
-              ],
-            ),
+              ),
+              Positioned(
+                right: 4,
+                bottom: 8,
+                child: FlatButton(
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text('Alle Einträge löschen?'),
+                            actions: [
+                              FlatButton(
+                                color: kPrimaryColorDark,
+                                textColor: Colors.white,
+                                child: Text('löschen'),
+                                onPressed: () {
+                                  Provider.of<ItemData>(context, listen: false)
+                                      .removeAllItems();
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                              FlatButton(
+                                color: kAccentColor,
+                                textColor: Colors.white,
+                                child: Text('Nein'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          );
+                        });
+                  },
+                  child: Icon(
+                    Icons.delete,
+                    size: 26.0,
+                    color: kAccentColor,
+                  ),
+                ),
+              ),
+            ],
           ),
           Expanded(
             child: Container(
