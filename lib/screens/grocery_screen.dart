@@ -5,12 +5,12 @@ import 'package:einkaufsliste/widgets/grocery_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class TasksScreen extends StatefulWidget {
+class GroceryScreen extends StatefulWidget {
   @override
-  _TasksScreenState createState() => _TasksScreenState();
+  _GroceryScreenState createState() => _GroceryScreenState();
 }
 
-class _TasksScreenState extends State<TasksScreen> {
+class _GroceryScreenState extends State<GroceryScreen> {
   Widget buildBottomSheet(BuildContext context) => Container();
 
   @override
@@ -40,7 +40,7 @@ class _TasksScreenState extends State<TasksScreen> {
           Expanded(
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 20.0),
-              child: TasksList(),
+              child: GroceryList(),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -67,7 +67,7 @@ class GroceryListAddItemButton extends StatelessWidget {
           builder: (context) => SingleChildScrollView(
             padding: EdgeInsets.only(
                 bottom: MediaQuery.of(context).viewInsets.bottom),
-            child: AddTaskScreen(),
+            child: AddItemScreen(),
           ),
           isScrollControlled: true,
         );
@@ -110,7 +110,7 @@ class GroceryListSubtitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      'Besorge diese ${Provider.of<TaskData>(context).taskCount} Dinge',
+      'Besorge diese ${Provider.of<ItemData>(context).itemCount} Dinge',
       style: TextStyle(
         color: Colors.white,
         fontSize: 18.0,

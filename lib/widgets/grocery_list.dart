@@ -3,32 +3,32 @@ import 'package:einkaufsliste/widgets/item_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class TasksList extends StatefulWidget {
+class GroceryList extends StatefulWidget {
   @override
-  _TasksListState createState() => _TasksListState();
+  _GroceryListState createState() => _GroceryListState();
 }
 
-class _TasksListState extends State<TasksList> {
+class _GroceryListState extends State<GroceryList> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<TaskData>(
-      builder: (context, taskData, child) {
+    return Consumer<ItemData>(
+      builder: (context, itemData, child) {
         return ListView.builder(
           itemBuilder: (context, index) {
-            var task = taskData.tasks[index];
+            var item = itemData.items[index];
 
-            return TaskTile(
-              taskTitle: task.name,
-              isChecked: task.isDone,
+            return ItemTile(
+              itemTitle: item.name,
+              isChecked: item.isDone,
               checkboxCallback: (checkboxState) {
-                taskData.toggleTask(index);
+                itemData.toggleItem(index);
               },
               onLongPress: () {
-                taskData.removeTask(index);
+                itemData.removeItem(index);
               },
             );
           },
-          itemCount: taskData.taskCount,
+          itemCount: itemData.itemCount,
         );
       },
     );

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class TaskTile extends StatelessWidget {
+class ItemTile extends StatelessWidget {
   final bool isChecked;
-  final String taskTitle;
+  final String itemTitle;
   final Function checkboxCallback;
   final Function onLongPress;
 
-  TaskTile(
+  ItemTile(
       {@required this.isChecked,
-      @required this.taskTitle,
+      @required this.itemTitle,
       @required this.checkboxCallback,
       @required this.onLongPress});
 
@@ -16,7 +16,7 @@ class TaskTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(
-        taskTitle,
+        itemTitle,
         style: TextStyle(
           decoration: isChecked ? TextDecoration.lineThrough : null,
         ),

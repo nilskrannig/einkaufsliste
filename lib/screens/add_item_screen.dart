@@ -4,10 +4,10 @@ import 'package:einkaufsliste/models/item_data.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class AddTaskScreen extends StatelessWidget {
+class AddItemScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    String _taskName;
+    String _itemName;
 
     return Container(
       color: kPrimaryColorDimmed,
@@ -24,7 +24,7 @@ class AddTaskScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              'Add Task',
+              'Add Item',
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: kPrimaryColor,
@@ -46,15 +46,15 @@ class AddTaskScreen extends StatelessWidget {
                 ),
               ),
               onChanged: (value) {
-                _taskName = value;
+                _itemName = value;
               },
             ),
             FlatButton(
               color: kAccentColor,
               textColor: Colors.white,
               onPressed: () {
-                Provider.of<TaskData>(context, listen: false).addTask(
-                  Task(name: _taskName),
+                Provider.of<ItemData>(context, listen: false).addItem(
+                  Item(name: _itemName),
                 );
                 Navigator.pop(context);
               },

@@ -3,31 +3,31 @@ import 'package:flutter/foundation.dart';
 
 import 'package:einkaufsliste/models/item.dart';
 
-class TaskData extends ChangeNotifier {
-  List<Task> _tasks = [
-    Task(name: 'Milch'),
+class ItemData extends ChangeNotifier {
+  List<Item> _items = [
+    Item(name: 'Milch'),
   ];
 
-  void addTask(Task task) {
-    _tasks.add(task);
+  void addItem(Item item) {
+    _items.add(item);
     notifyListeners();
   }
 
-  void toggleTask(int index) {
-    _tasks[index].toggleDone();
+  void toggleItem(int index) {
+    _items[index].toggleDone();
     notifyListeners();
   }
 
-  UnmodifiableListView<Task> get tasks {
-    return UnmodifiableListView(_tasks);
+  UnmodifiableListView<Item> get items {
+    return UnmodifiableListView(_items);
   }
 
-  void removeTask(int index) {
-    _tasks.removeAt(index);
+  void removeItem(int index) {
+    _items.removeAt(index);
     notifyListeners();
   }
 
-  int get taskCount {
-    return _tasks.length;
+  int get itemCount {
+    return _items.length;
   }
 }
