@@ -109,8 +109,14 @@ class GroceryListTitle extends StatelessWidget {
 class GroceryListSubtitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    int itemCount = Provider.of<ItemData>(context).itemCount;
+    String subtitleText;
+    itemCount == 1
+        ? subtitleText = 'Besorge dieses Ding'
+        : subtitleText = 'Besorge diese ${itemCount} Dinge';
+
     return Text(
-      'Besorge diese ${Provider.of<ItemData>(context).itemCount} Dinge',
+      subtitleText,
       style: TextStyle(
         color: Colors.white,
         fontSize: 18.0,
