@@ -40,8 +40,9 @@ class _GroceryScreenState extends State<GroceryScreen> {
                 ),
               ),
               Positioned(
-                right: 4,
-                bottom: 8,
+                width: 60,
+                right: 2,
+                bottom: 2,
                 child: FlatButton(
                   onPressed: () {
                     showDialog(
