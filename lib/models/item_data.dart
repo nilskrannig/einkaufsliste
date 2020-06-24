@@ -4,9 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:einkaufsliste/models/item.dart';
 
 class ItemData extends ChangeNotifier {
-  List<Item> _items = [
-    Item(name: 'Milch'),
-  ];
+  List<Item> _items = [];
 
   void addItem(Item item) {
     _items.add(item);
@@ -24,6 +22,11 @@ class ItemData extends ChangeNotifier {
 
   void removeItem(int index) {
     _items.removeAt(index);
+    notifyListeners();
+  }
+
+  void removeAllItems() {
+    _items = [];
     notifyListeners();
   }
 
